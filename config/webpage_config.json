@@ -1,0 +1,13 @@
+{
+	"default_web_page": {
+		"head": {
+			"title": "A Web Site Name",
+			"style_sheets": [],
+			"links": [],
+			"scripts": []
+		},
+		"body": {
+			"scripts": []
+		}
+	}
+}

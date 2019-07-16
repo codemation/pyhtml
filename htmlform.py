@@ -130,8 +130,10 @@ class Input:
             prop=properties,
             value=' value="%s"'%(self.dispname) if not 'value' in self.kw else '',
             name=' name="%s"'%(self.name) if 'name' in self.__dict__ else '',
-            onclick=' onclick=SendForm("%s","%s","%s") '%(self.kw['onclick']['id'], self.kw['onclick']['self'], 
-            self.kw['onclick']['tar']) if 'onclick' in self.kw else '')
+            onclick=' onclick=SendForm("%s","%s","%s") '%(
+                self.kw['onclick']['id'], 
+                self.kw['onclick']['self'], 
+                self.kw['onclick']['tar']) if 'onclick' in self.kw else '')
         for retItems in self.labelWrap(hasCustomLabel, inputText):
             toReturn.append(retItems)
         if not self.elementType == 'input':
@@ -471,7 +473,7 @@ class ul(htmlelement):
 
 class col(htmlelement):
     """
-        colums(vertical) which contain html elements such as form inputs(select, check_box, text_box, button, radio)
+        colums(vertical) which contain html elements such as inputs(select, check_box, text_box, button, radio)
         id:  
             unique id for column element
         blk: 
