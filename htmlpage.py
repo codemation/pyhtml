@@ -51,6 +51,12 @@ class page(htmlelement):
     """
     def __init__(self, pageName, **kw):
         self.pageName = pageName
+        try:
+            self.load()
+        except Exception as e:
+            print(repr(e))
+            self.head = head(self.pageName)
+            self.body = body()
     def load(self):
         try:
             try:
@@ -68,10 +74,7 @@ class page(htmlelement):
                             scripts=js_config[cfg]['head']['scripts'])
             self.body = body(scripts=js_config[cfg]['body']['scripts'])
             config.close()
-        except Exception as e:
-            print(repr(e))
-            self.head = head(self.pageName)
-            self.body = body()
+
     def save(self):
         webpage = {
             self.pageName: {
