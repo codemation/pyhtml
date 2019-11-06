@@ -51,7 +51,7 @@ class page(htmlelement):
     """
     def __init__(self, pageName, **kw):
         self.pageName = pageName
-        self.load()
+        #self.load()
     def load(self):
         try:
             config = open('config/%s_config.json'%(self.pageName),'r')
