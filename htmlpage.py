@@ -70,16 +70,18 @@ class page(htmlelement):
         config.close()
     def save(self):
         webpage = {
-                    self.pageName: {
-                            "head": {"title": self.head.title,
-                                     "style_sheets": self.head.style_sheets,
-                                     "links": self.head.links,
-                                     "scripts": self.head.scripts
-                                     },
-                            "body": {"scripts": self.body.scripts
-                                }
-                            }
-                    }
+            self.pageName: {
+                "head": {
+                    "title": self.head.title,
+                    "style_sheets": self.head.style_sheets,
+                    "links": self.head.links,
+                    "scripts": self.head.scripts
+                },
+                "body": {
+                    "scripts": self.body.scripts
+                }
+            }
+        }
         with open('config/%s_config.json'%(self.pageName), 'w+') as config:
             json.dump(webpage, config)
     def htmlrender(self, content):

@@ -320,6 +320,7 @@ class td(htmlelement):
         
 class tr(object):
     """
+        Table Row
         optional kw args:
             color: primary, success, info, warning, danger, active, secondary, light and dark
                     https://www.w3schools.com/bootstrap4/tryit.asp?filename=trybs_table_contextual&stacked=h
