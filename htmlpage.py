@@ -59,21 +59,20 @@ class page(htmlelement):
             self.body = body()
     def load(self):
         try:
-            try:
-                config = open('config/%s_config.json'%(self.pageName),'r')
-                cfg = self.pageName
-            except:
-                cfg = 'default_web_page'
-                config = open('config/webpage_config.json','r')
-                pass
-            js_config = json.load(config)
-            print (js_config)
-            self.head = head(self.pageName, 
-                            links=js_config[cfg]['head']['links'], 
-                            style=js_config[cfg]['head']['style_sheets'],
-                            scripts=js_config[cfg]['head']['scripts'])
-            self.body = body(scripts=js_config[cfg]['body']['scripts'])
-            config.close()
+            config = open('config/%s_config.json'%(self.pageName),'r')
+            cfg = self.pageName
+        except:
+            cfg = 'default_web_page'
+            config = open('config/webpage_config.json','r')
+            pass
+        js_config = json.load(config)
+        print (js_config)
+        self.head = head(self.pageName, 
+                        links=js_config[cfg]['head']['links'], 
+                        style=js_config[cfg]['head']['style_sheets'],
+                        scripts=js_config[cfg]['head']['scripts'])
+        self.body = body(scripts=js_config[cfg]['body']['scripts'])
+        config.close()
 
     def save(self):
         webpage = {
