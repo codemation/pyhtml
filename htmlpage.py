@@ -51,23 +51,27 @@ class page(htmlelement):
     """
     def __init__(self, pageName, **kw):
         self.pageName = pageName
-        #self.load()
     def load(self):
         try:
-            config = open('config/%s_config.json'%(self.pageName),'r')
-            cfg = self.pageName
-        except:
-            cfg = 'default_web_page'
-            config = open('config/webpage_config.json','r')
-            pass
-        js_config = json.load(config)
-        print (js_config)
-        self.head = head(self.pageName, 
-                         links=js_config[cfg]['head']['links'], 
-                         style=js_config[cfg]['head']['style_sheets'],
-                         scripts=js_config[cfg]['head']['scripts'])
-        self.body = body(scripts=js_config[cfg]['body']['scripts'])
-        config.close()
+            try:
+                config = open('config/%s_config.json'%(self.pageName),'r')
+                cfg = self.pageName
+            except:
+                cfg = 'default_web_page'
+                config = open('config/webpage_config.json','r')
+                pass
+            js_config = json.load(config)
+            print (js_config)
+            self.head = head(self.pageName, 
+                            links=js_config[cfg]['head']['links'], 
+                            style=js_config[cfg]['head']['style_sheets'],
+                            scripts=js_config[cfg]['head']['scripts'])
+            self.body = body(scripts=js_config[cfg]['body']['scripts'])
+            config.close()
+        except Exception as e:
+            print(repr(e))
+            self.head = head(self.pageName)
+            self.body = body()
     def save(self):
         webpage = {
             self.pageName: {
