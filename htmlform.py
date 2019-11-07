@@ -288,7 +288,8 @@ class htmlelement(object):
         for item in self.items:
             try:
                 itemIns = item.html()
-            except AttributeError:
+            except Exception as e:
+                preint(repr(e))
                 print(item)
                 print('is not the correct type htmlelement')
             if itemIns is not None:
